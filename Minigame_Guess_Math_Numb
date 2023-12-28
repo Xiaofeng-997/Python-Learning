@@ -1,0 +1,46 @@
+
+
+#random mudule kan generera ett slumptal
+import random
+
+answear = random.randint(1,100)# generera ett slumptal mellan 1 och 100
+counts = 10# ger spelaren 10 försök
+
+#CTRL+/ = konverterar flera rader till kommentar
+# while counts > 0: 
+#   temp = input("Enter a number: ")
+#   guess = int(temp)
+  
+#   if guess == answear:
+#     print("It's right!")
+#     break
+
+#   elif guess < answear:
+#     print("Too low!")
+#     counts = counts - 1
+
+#   else:
+#     print("Too high!")
+#     counts = counts - 1
+
+# print("game over")
+
+#för att spel ska ger flera försök vid fel svar, kan man använda en while loop
+    
+while counts > 0:
+  temp = input("Enter a number: ")
+  guess = int(temp)#här behöver int() för konverterar inmatning från string till ett integer
+  #utan int() så kommer svaret vara en sträng,vilken det kommer skapa ett fel
+
+  if guess == answear:
+    print("It's right!")
+    break#  använda break för att avsluta loopen när spelaren gissat rätt
+  else:
+    if guess < answear:
+      print("Too low!")
+      counts = counts - 1
+    else:
+      print("Too high!")
+      counts = counts - 1
+
+print("Game over")
