@@ -1,0 +1,127 @@
+
+
+import os
+import platform
+from datetime import datetime
+import time
+
+def local_time():
+    tid = datetime.now()
+    print(f'Tid: {tid.strftime('%Y-%m-%d %H:%M')}') # Display local time
+
+
+#platform 模块可以检测系统属于哪个平台
+#The "platform" module can detect which platform the system belongs to.
+def display_clear():
+    if platform.system() == 'Windows': # Use os.system to clear the console screen
+        os.system('cls')
+    elif platform.system() == 'Linux' or platform.system() == 'Darwin':
+        os.system('clear')
+
+contact = {}
+
+
+def display():
+    # print(contact)
+    return contact # To avoid printing out 'None'
+
+# 如果用户的输入在while循环外获取，将会导致while loop陷入死循环
+# If the user input is obtained outside the while loop, it may lead to the while loop getting stuck in an infinite loop
+# val = input('1. Add \n2. Serch\n3. Delete\n4. Change\n5. Exit\n')
+
+while True:
+    local_time()
+    
+    # Get user input for menu selection.
+    val = input('1. Add \n2. Serch\n3. Delete\n4. Change\n5. Visa Kontaktbok\n9. Exit\n:')
+    # Convert user input to lowercase for case-insentive comparisons.
+    val = val.lower()
+
+    if val == '1':
+        display_clear()
+        name = input('Ange name: ')
+        number = input('Ange Telefonnumber: ')
+        contact[name] = number #这样子可以将’name‘这个key赋值
+
+    elif val == '2':
+        
+        # name_serch = input('Sök\nAnge 9  exit\n')
+        
+        while True:
+            name_serch = input('Ange 9  exit\nSök: ')
+
+            # OBS!  在'if'语句链中，一旦前一个条件被触发，后续的'elif'或'else'语句将不再执行
+            # NOTE! In an 'if' statement chain, once the preceding condition is triggered, the subsequent 'elif' or 'else' statements will not be executed
+            if name_serch == '9':
+                break
+            # Break 会跳出最近一个循环。比如这里会跳出含有’name_serch‘变量的While循环，到外一侧的循环
+            # Break" will exit the nearest loop. For example, here it will exit the While loop containing the 'name_search' variable and return to the outer loop
+
+            if name_serch in contact:
+                display_clear()
+                print(f'{name_serch}\'s number är: {contact[name_serch]}') # ‘contact[name_serch]’ 会直指(påpeka)与’name_serch‘相匹配的KEY
+                break
+
+            elif name_serch not in contact:
+                display_clear()
+                print('Tyvärr Hitta ej i boken')
+                
+        
+            # elif name_serch == '9':
+            #     break
+
+       
+    
+    elif val == '3':
+        # name_delete = input('Ange 9 exit\nDelete Name: ')
+
+        while True:
+            name_delete = input('Delete\nAnge 9 exit\n')
+
+            if name_delete in contact:
+                del contact[name_delete]
+                print(f'{name_delete} är borttage')
+
+            elif name_delete == '9':
+                break
+
+            elif name_delete not in contact:
+                display_clear()
+                print(f'{name_delete} fanns inte i boken')
+                # break
+
+        
+
+
+    elif val == '4':
+        name_change = input('ändra name\n9 för exit \n:')
+
+        while True:
+
+            if name_change in contact:
+                contact[name_change] = number
+                print(f'{contact[name_change]}\'s ny nummer är: ')
+            
+            elif name_change not in contact:
+                print(name_change,' fanns ej i boken')
+
+            elif name_change == '9':
+                break
+
+    elif val == '5':
+       print('kontaktboken är tom' if not contact else display()) # 如果else被触发,由于print()和display()函数位于同一行，而display()会默认返回None所以即会打印出Contact也会打印出None。
+        # 为了避免打印出None可以选择在display()中加入return来返回某些值
+        # 又或是让if和else分行
+
+        # if not contact:
+        #     print('det är tom')
+        # else:
+        #     display()
+    
+
+
+    elif val == '9':
+        break
+
+                                                    
+
