@@ -1,19 +1,24 @@
+
 from decimal import Decimal
 from decimal import Decimal,InvalidOperation
+
 #OBS need import 'Decimal,InvalidOperation' to use 'except InvalidOperation'
 
 # Grundläggande Aritmetiska Operationer
 #Utför Addition, Subtraktion, Multiplikation and Division
+
 
 while True:
 
 
         menu_select = input('1-Addition\n2-Subtraktion\n3-Multiplikation\n4-Division\n5-Exit\nOBS Enter exit to exit in Operation\nYou Choice Is: ')
 
+
         # Addition
         if menu_select == '1':
             while True:
-                try: # To make sure program will still run even user input is not a number
+                
+                try: # To make sure program will still run even user input is not a number 
                 
                     tal_1 = input('Ange tal 1: ')
                     
@@ -22,7 +27,7 @@ while True:
 
                     tal_2 = input('Ange tal 2: ')
                     
-                    if tal_2.lower() == 'exit': # break the loop if user entered exit
+                    if tal_2.lower() == 'exit': # break the loop if user entered exit later
                         break
             
                     # OBS 下面这种if判定需要两个值都完成输入才会开始执行
@@ -33,10 +38,10 @@ while True:
                     tal_2 = float(tal_2)
                     svar = tal_1 + tal_2
 
-                    if svar.is_integer():
-                        tal_1 = int(tal_1)
-                        tal_2 = int(tal_2)
-                        print(f'Answear of {tal_1} + {tal_2} is: ',int(svar))
+                    
+                    if svar.is_integer(): # To check if the variable is an integer.
+
+                        print(f'Answear of {tal_1} + {tal_2} is: ',int(svar)) # Use int() to more comfort to read
                     
                     else:
                         print(f'Answear of {tal_1} + {tal_2} is: ',svar)
@@ -45,13 +50,7 @@ while True:
                     print('PLS ENTER NUMBER!')              
 
                 except ValueError:
-                    # if tal_1.lower() == 'exit':
-        
-                    #     break
 
-                    # elif tal_2.lower() == 'exit':
-                    #     break
-                    # else:
                     print('PLS Enter Number')
             #Subtraktion
         
@@ -61,7 +60,7 @@ while True:
                 try:
 
                     tal_1 = input('Enter A Number: ')
-                    if tal_1.lower() == 'exit':
+                    if tal_1.lower() == 'exit': # If user input is exit, then break the loop
                         break
                     tal_2 = input('Enter A NUmber: ')
                     if tal_2.lower() == 'exit':
@@ -71,6 +70,7 @@ while True:
                     tal_2 = Decimal(tal_2)
                     svar = tal_1 - tal_2
 
+                    # Use int() to make output more readable 
                     if int(svar) == svar: # check if the answer is a integer
                         print(f'Answear of {int(tal_1)} - {int(tal_2)} is: {int(svar)}')
 
@@ -87,6 +87,7 @@ while True:
                         
                     #     else:
                     #         print(f'Answear of {tal_1} - {int(tal_2)} is: {svar}')
+                    
                     else:
                         print(f'Answear of {tal_1} - {tal_2} is: {svar}')
                 
