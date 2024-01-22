@@ -1,4 +1,5 @@
 
+# Contact Book
 
 
 import os
@@ -9,7 +10,7 @@ import time
 # Datetime modul kan visa dagens datum och tiden
 def local_time():
     tid = datetime.now()
-    print(f'Tid: {tid.strftime('%Y-%m-%d %H:%M')}') # Display local time    # Visa lokal time i display
+    print(f'Tid: {tid.strftime("%Y-%m-%d %H:%M")}') # Display local time    # Visa lokal time i display
 
 
 # platform 模块可以检测系统属于哪个平台
